@@ -1,6 +1,8 @@
+/* Default Light Theme */
 body {
     background-color: #FFFDD0;
     font-family: 'Open Sans', sans-serif;
+    color: #4B0082;
 }
 h1, h2, h3 {
     font-family: 'Lora', serif;
@@ -13,9 +15,12 @@ h1, h2, h3 {
     border: none;
     padding: 10px 20px;
     font-family: 'Lora', serif;
+    transition: all 0.2s ease-in-out;
 }
 .stButton>button:hover {
     background-color: #E6E6FA;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .stTextInput>div>input {
     border: 1px solid #FFD1DC;
@@ -24,25 +29,36 @@ h1, h2, h3 {
 .container {
     border: 1px solid #E6E6FA;
     border-radius: 10px;
-    padding: 10px;
-    background-color: #FFFFFF;
-}
-/* Glassmorphism for chat */
-.container.chat {
+    padding: 20px;
     background: rgba(255, 209, 220, 0.3);
     backdrop-filter: blur(5px);
-    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* Button hover animation */
-.stButton>button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease-in-out;
+.chat-message:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
 }
-
-/* Heart icon for group header */
-.group-header::before {
+.stSidebar::before {
     content: '💞';
-    margin-right: 10px;
+    font-size: 24px;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Dark Mode */
+.dark-mode body {
+    background-color: #2C003E;
+    color: #FFD1DC;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3 {
+    color: #FFD1DC;
+}
+.dark-mode .stButton>button {
+    background-color: #E6E6FA;
+    color: #2C003E;
+}
+.dark-mode .container {
+    background: rgba(230, 230, 250, 0.3);
+    border: 1px solid #FFD1DC;
 }
