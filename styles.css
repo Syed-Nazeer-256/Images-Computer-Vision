@@ -1,64 +1,205 @@
-/* Default Light Theme */
+/* styles.css */
+
+/* Import Google Fonts (Place this at the top) */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* --- Default Light Theme --- */
 body {
-    background-color: #FFFDD0;
+    /* Soft background */
+    background-color: #FFF0F5; /* Lavender Blush - softer than cream */
+    /* Readable sans-serif for body text */
     font-family: 'Open Sans', sans-serif;
-    color: #4B0082;
-}
-h1, h2, h3 {
-    font-family: 'Lora', serif;
-    color: #4B0082;
-}
-.stButton>button {
-    background-color: #FFD1DC;
-    color: #4B0082;
-    border-radius: 10px;
-    border: none;
-    padding: 10px 20px;
-    font-family: 'Lora', serif;
-    transition: all 0.2s ease-in-out;
-}
-.stButton>button:hover {
-    background-color: #E6E6FA;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.stTextInput>div>input {
-    border: 1px solid #FFD1DC;
-    border-radius: 5px;
-}
-.container {
-    border: 1px solid #E6E6FA;
-    border-radius: 10px;
-    padding: 20px;
-    background: rgba(255, 209, 220, 0.3);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.chat-message:hover {
-    transform: scale(1.02);
-    transition: transform 0.2s ease-in-out;
-}
-.stSidebar::before {
-    content: '💞';
-    font-size: 24px;
-    display: block;
-    text-align: center;
-    margin-bottom: 10px;
+    /* A deep, warm color for text */
+    color: #5D3A9B; /* Medium Purple - good contrast, less harsh than Indigo */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
 }
 
-/* Dark Mode */
+h1, h2, h3, h4, h5, h6 {
+    /* Elegant serif for headers */
+    font-family: 'Lora', serif;
+    color: #4B0082; /* Indigo - keep for strong headings */
+}
+
+/* --- Streamlit Specific Component Styling --- */
+
+/* Buttons */
+.stButton > button {
+    background-color: #FFB6C1; /* Light Pink - soft primary action color */
+    color: #4B0082; /* Indigo - text on pink */
+    border-radius: 15px; /* Softer corners */
+    border: 1px solid #FFC0CB; /* Pink border */
+    padding: 10px 20px;
+    font-family: 'Lora', serif; /* Consistent elegant font */
+    font-weight: 600; /* Slightly bolder */
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer;
+}
+.stButton > button:hover {
+    background-color: #FFD1DC; /* Lighter Pink on hover */
+    color: #5D3A9B; /* Medium Purple text on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(75, 0, 130, 0.2); /* More pronounced shadow on hover */
+}
+.stButton > button:active {
+    transform: translateY(0px); /* Click effect */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Inputs */
+.stTextInput > div > input, .stTextArea > div > textarea, .stSelectbox > div[data-baseweb="select"] > div {
+    border: 1px solid #D8BFD8; /* Thistle - soft border color */
+    border-radius: 8px; /* Consistent rounded corners */
+    background-color: #FFFFFF; /* Ensure input background is white */
+    color: #4B0082; /* Text color inside input */
+    padding-left: 10px; /* Add some padding */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.stTextInput > div > input:focus, .stTextArea > div > textarea:focus, .stSelectbox > div[data-baseweb="select"] > div:focus-within {
+    border-color: #FFB6C1; /* Light Pink border on focus */
+    box-shadow: 0 0 0 2px rgba(255, 182, 193, 0.3); /* Subtle glow on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Containers (like the one suggested for chat) */
+.stContainer {
+    /* Use sparingly, maybe for main content area if needed */
+    /* Example style:
+    border: 1px solid #E6E6FA; /* Lavender */
+    /* border-radius: 10px; */
+    /* padding: 20px; */
+    /* background: rgba(255, 223, 230, 0.2); /* Very faint pink */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); */
+}
+
+/* Sidebar Styling */
+.stSidebar {
+    background-color: #FAE6FA; /* Lighter Lavender shade for sidebar */
+    border-right: 1px solid #D8BFD8; /* Thistle border */
+}
+.stSidebar .stButton > button {
+    /* Slightly different button style for sidebar maybe? */
+    background-color: #E6E6FA; /* Lavender */
+    color: #4B0082;
+}
+.stSidebar .stButton > button:hover {
+    background-color: #D8BFD8; /* Thistle */
+}
+
+/* Add a subtle icon/decoration to the sidebar top */
+.stSidebar > div:first-child::before { /* Target the first div inside the sidebar */
+    content: '💞';
+    font-size: 28px;
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 10px; /* Add some space above */
+    color: #FF69B4; /* Hot Pink for the icon */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow for icon */
+}
+
+/* --- Chat Bubble Styling --- */
+/* Target the custom HTML structure added in chat.py */
+.chat-bubble-container {
+    display: flex;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease-in-out; /* Fade in messages */
+}
+.chat-bubble {
+    padding: 10px 15px;
+    border-radius: 18px; /* More rounded bubbles */
+    max-width: 75%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.chat-bubble.sent {
+    background-color: #E1FFC7; /* Light green for sent messages */
+    color: #333; /* Darker text for readability */
+    border-bottom-right-radius: 5px; /* Slightly shape the bubble tail */
+    margin-left: auto; /* Align right */
+}
+.chat-bubble.received {
+    background-color: #FFFFFF; /* White for received */
+    color: #333;
+    border: 1px solid #f0f0f0; /* Subtle border */
+    border-bottom-left-radius: 5px; /* Shape tail */
+    margin-right: auto; /* Align left */
+}
+.chat-sender-time {
+    font-size: 0.75em;
+    color: #888;
+    display: block; /* Put sender/time on its own line */
+    margin-bottom: 3px;
+}
+.chat-text {
+    font-size: 0.95em;
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+/* --- Video Player Styling (Minimal) --- */
+.stVideo video {
+    border-radius: 10px; /* Rounded corners for the video player */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Add shadow to video */
+    width: 100%; /* Ensure video takes full width of its container */
+}
+
+/* --- Keyframes for animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Dark Mode Overrides --- */
 .dark-mode body {
-    background-color: #2C003E;
-    color: #FFD1DC;
+    background-color: #2C1F3D; /* Dark Purple */
+    color: #E6E6FA; /* Lavender text */
 }
-.dark-mode h1, .dark-mode h2, .dark-mode h3 {
-    color: #FFD1DC;
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+    color: #FFD1DC; /* Light Pink headers */
 }
-.dark-mode .stButton>button {
-    background-color: #E6E6FA;
-    color: #2C003E;
+.dark-mode .stButton > button {
+    background-color: #7E57C2; /* Deep Purple button */
+    color: #FFFFFF; /* White text */
+    border: 1px solid #9575CD; /* Lighter purple border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-.dark-mode .container {
-    background: rgba(230, 230, 250, 0.3);
-    border: 1px solid #FFD1DC;
+.dark-mode .stButton > button:hover {
+    background-color: #9575CD; /* Lighter purple on hover */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+.dark-mode .stTextInput > div > input,
+.dark-mode .stTextArea > div > textarea,
+.dark-mode .stSelectbox > div[data-baseweb="select"] > div {
+    background-color: #3E2C50; /* Darker input background */
+    color: #E6E6FA; /* Lavender text */
+    border-color: #5D3A9B; /* Medium Purple border */
+}
+.dark-mode .stTextInput > div > input:focus,
+.dark-mode .stTextArea > div > textarea:focus,
+.dark-mode .stSelectbox > div[data-baseweb="select"] > div:focus-within {
+    border-color: #B39DDB; /* Lighter purple border on focus */
+    box-shadow: 0 0 0 2px rgba(179, 157, 219, 0.3);
+}
+.dark-mode .stSidebar {
+    background-color: #3E2C50; /* Darker sidebar */
+    border-right: 1px solid #5D3A9B;
+}
+.dark-mode .stSidebar > div:first-child::before {
+     color: #FFB6C1; /* Light Pink icon in dark mode */
+     text-shadow: none;
+}
+.dark-mode .chat-bubble.sent {
+    background-color: #5A8E42; /* Darker green for sent */
+    color: #FFFFFF;
+}
+.dark-mode .chat-bubble.received {
+    background-color: #4A3F5E; /* Dark greyish-purple for received */
+    color: #E6E6FA;
+    border: 1px solid #5D4A7B;
+}
+.dark-mode .chat-sender-time {
+    color: #B0A8C0; /* Lighter grey for time */
+}
+.dark-mode .stVideo video {
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
