@@ -1,6 +1,7 @@
 # sync.py
 import streamlit as st
 import json
+import time
 import logging # Use logging for better debugging
 
 # Configure logger for this module
